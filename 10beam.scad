@@ -1,3 +1,3 @@
-include <bitbeam.scad>
+include <beatbeam.scad>
 
 xBeam(10);
