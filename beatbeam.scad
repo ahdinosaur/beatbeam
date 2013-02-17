@@ -27,7 +27,7 @@ module zBeam(segments) {
 	difference() {
 		cube([$beam_width, $beam_width, $beam_width * segments]);
 		for(i = [0 : segments - 1]) {
-			translate([$beam_width / 2, $beam_width + 1, $beam_width * i + $beam_width / 2 + epsilon])
+			translate([$beam_width / 2, $beam_width + 1, $beam_width * i + $beam_width / 2])
 			rotate([90,0,0])
 			cylinder(r=$beam_hole_radius, h=$beam_width + 2, $fn=50);
 
