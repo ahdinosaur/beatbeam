@@ -1,24 +1,24 @@
 /*
- *  OpenSCAD BitBeam Library (www.openscad.org)
+ *  OpenSCAD BeatBeam Library (www.openscad.org)
  *  Copyright (C) 2009 Timothy Schmidt
  *                     Michael Williams
  *
  *  License: LGPL 2.1 or later
 */
 
-// zBeam(segments) - create a vertical bitbeam strut 'segments' long
-// xBeam(segments) - create a horizontal bitbeam strut along the X axis
-// yBeam(segments) - create a horizontal bitbeam strut along the Y axis
-// topShelf(width, depth, corners) - create a shelf suitable for use in bitbeam structures width and depth in 'segments', corners == 1 notches corners
+// zBeam(segments) - create a vertical beatbeam strut 'segments' long
+// xBeam(segments) - create a horizontal beatbeam strut along the X axis
+// yBeam(segments) - create a horizontal beatbeam strut along the Y axis
+// topShelf(width, depth, corners) - create a shelf suitable for use in beatbeam structures width and depth in 'segments', corners == 1 notches corners
 // bottomShelf(width, depth, corners) - like topShelf, but aligns shelf to underside of beams
-// backBoard(width, height, corners) - create a backing board suitable for use in bitbeam structures width and height in 'segments', corners == 1 notches corners
+// backBoard(width, height, corners) - create a backing board suitable for use in beatbeam structures width and height in 'segments', corners == 1 notches corners
 // frontBoard(width, height, corners) - like backBoard, but aligns board to front side of beams
-// translateBeam([x, y, z]) - translate bitbeam struts or shelves in X, Y, or Z axes in units 'segments'
+// translateBeam([x, y, z]) - translate beatbeam struts or shelves in X, Y, or Z axes in units 'segments'
 
 include <units.scad>
 
 $beam_width = mm * 10;
-$beam_hole_radius = mm * 2.9;
+$beam_hole_radius = mm * 2.4;
 $beam_is_hollow = 0;
 $beam_wall_thickness = mm * 2;
 $beam_shelf_thickness = mm * 4;
