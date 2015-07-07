@@ -18,6 +18,8 @@
 include <units.scad>
 include <nuts_and_bolts.scad>
 
+xBeam(10, [0,1,2,3]);
+
 $beam_width = mm * 10;
 $beam_hole_radius = mm * 2.4;
 $beam_is_hollow = 0;
@@ -25,7 +27,24 @@ $beam_wall_thickness = mm * 2;
 $beam_shelf_thickness = mm * 4;
 $hex_size = 4;
 
-module zBeam(segments, sockets) {
+// TODO
+// bits by [up, right, down, left]
+// 0000 = 0 = none
+// 0001 = 1 = left
+// 0010 = 2 = down
+// 0011 = 3 = down left
+// 0100 = 4 = right
+// 0101 = 5 = right left
+// 0110 = 6 = right down
+// 0111 = 7 = right down left
+// 1000 = 8 = up
+// 1001 = 9 = up left
+// 1010 = 10 = up down
+// 1011 = 11 = up down left
+// 1100 = 12 = up right
+// 1101 = 13 = up right left
+// 1110 = 14 = up right down
+// 1111 = 15 = up right down left
 	difference() {
 		cube([$beam_width, $beam_width, $beam_width * segments]);
 		for(i = [0 : segments - 1]) {
