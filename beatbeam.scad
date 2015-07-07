@@ -25,7 +25,7 @@ $beam_wall_thickness = mm * 2;
 $beam_shelf_thickness = mm * 4;
 $hex_size = 4;
 
-module zBeam(segments) {
+module zBeam(segments, sockets) {
 	difference() {
 		cube([$beam_width, $beam_width, $beam_width * segments]);
 		for(i = [0 : segments - 1]) {
@@ -33,17 +33,21 @@ module zBeam(segments) {
 			rotate([90,0,0])
 			cylinder(r=$beam_hole_radius, h=$beam_width + 2, $fn=50);
 
-			translate([$beam_width / 2, $beam_width + 1, $beam_width * i + $beam_width / 2])
-			rotate([90,0,0])
-			nutHole(size=$hex_size);
-
+			if (sockets[i] == 1 || sockets[i] == 2) {
+				translate([$beam_width / 2, $beam_width + 1, $beam_width * i + $beam_width / 2])
+				rotate([90,0,0])
+		   	nutHole(size=$hex_size);
+			}
+			
 			translate([-1, $beam_width / 2, $beam_width * i + $beam_width / 2])
 			rotate([0,90,0])
 			cylinder(r=$beam_hole_radius, h=$beam_width + 2, $fn=50);
 
-			translate([-1, $beam_width / 2, $beam_width * i + $beam_width / 2])
-			rotate([0,90,0])
-			nutHole(size=$hex_size);
+			if (sockets[i] == 1 || sockets[i] == 3) {
+				translate([-1, $beam_width / 2, $beam_width * i + $beam_width / 2])
+				rotate([0,90,0])
+				nutHole(size=$hex_size);
+			}
 
 		}
 	if ($beam_is_hollow == 1) {
@@ -53,16 +57,16 @@ module zBeam(segments) {
 	}
 }
 
-module xBeam(segments) {
+module xBeam(segments, sockets) {
 	translate([0,0,$beam_width])
 	rotate([0,90,0])
-	zBeam(segments);
+	zBeam(segments, sockets);
 }
 
-module yBeam(segments) {
+module yBeam(segments, sockets) {
 	translate([0,0,$beam_width])
 	rotate([-90,0,0])
-	zBeam(segments);
+	zBeam(segments, sockets);
 }
 
 module translateBeam(v) {
