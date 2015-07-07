@@ -16,12 +16,14 @@
 // translateBeam([x, y, z]) - translate beatbeam struts or shelves in X, Y, or Z axes in units 'segments'
 
 include <units.scad>
+include <nuts_and_bolts.scad>
 
 $beam_width = mm * 10;
 $beam_hole_radius = mm * 2.4;
 $beam_is_hollow = 0;
 $beam_wall_thickness = mm * 2;
 $beam_shelf_thickness = mm * 4;
+$hex_size = 4;
 
 module zBeam(segments) {
 	difference() {
@@ -31,9 +33,18 @@ module zBeam(segments) {
 			rotate([90,0,0])
 			cylinder(r=$beam_hole_radius, h=$beam_width + 2, $fn=50);
 
+			translate([$beam_width / 2, $beam_width + 1, $beam_width * i + $beam_width / 2])
+			rotate([90,0,0])
+			nutHole(size=$hex_size);
+
 			translate([-1, $beam_width / 2, $beam_width * i + $beam_width / 2])
 			rotate([0,90,0])
 			cylinder(r=$beam_hole_radius, h=$beam_width + 2, $fn=50);
+
+			translate([-1, $beam_width / 2, $beam_width * i + $beam_width / 2])
+			rotate([0,90,0])
+			nutHole(size=$hex_size);
+
 		}
 	if ($beam_is_hollow == 1) {
 		translate([$beam_wall_thickness, $beam_wall_thickness, -1])
