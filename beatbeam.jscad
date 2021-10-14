@@ -1,5 +1,6 @@
 /*
  *  OpenJsCad BeatBeam Library (http://joostn.github.com/OpenJsCad/)
+ *  Copyright (C) 2009 Timothy Schmidt
  *  Copyright (C) 2013 Michael Williams
  *
  *  License: LGPL 2.1 or later
